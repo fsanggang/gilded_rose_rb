@@ -12,14 +12,11 @@ class GildedRose
       when "Aged Brie"
         Brie.new(item).update_quality
       when "Sulfuras, Hand of Ragnaros"
-        update_quality_sulfuras(item)
+        return
       else
         puts "WAT"
       end
     end
-  end
-
-  def update_quality_sulfuras(item)
   end
 end
 
