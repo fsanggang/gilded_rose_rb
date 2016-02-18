@@ -10,7 +10,7 @@ class GildedRose
       when "Backstage passes to a TAFKAL80ETC concert"
         update_quality_backstage(item)
       when "Aged Brie"
-        update_quality_brie(item)
+        Brie.new(item).update_quality
       when "Sulfuras, Hand of Ragnaros"
         update_quality_sulfuras(item)
       else
@@ -29,13 +29,6 @@ class GildedRose
     item.quality = item.quality + 1 if item.sell_in >= 10
   end
 
-  def update_quality_brie(item)
-    item.sell_in = item.sell_in - 1
-
-    item.quality = item.quality + 1 if item.sell_in <= 0 unless item.quality >= 50
-    item.quality = item.quality + 1 unless item.quality >= 50
-  end
-
   def update_quality_sulfuras(item)
   end
 end
@@ -52,4 +45,21 @@ class Item
   def to_s()
     "#{@name}, #{@sell_in}, #{@quality}"
   end
+end
+
+class Brie < Item
+
+  attr_accessor :item
+
+  def initialize(item)
+    @item = item
+  end
+
+  def update_quality
+    item.sell_in = item.sell_in - 1
+
+    item.quality = item.quality + 1 if item.sell_in <= 0 unless item.quality >= 50
+    item.quality = item.quality + 1 unless item.quality >= 50
+  end
+
 end
