@@ -22,10 +22,11 @@ class GildedRose
   def update_quality_backstage(item)
     item.sell_in = item.sell_in - 1
 
-    item.quality = item.quality + 3 if item.sell_in > 0 && item.sell_in < 6
-    item.quality = item.quality + 2 if item.sell_in >= 6 && item.sell_in < 10
+    return item.quality = 0 if item.quality >= 49
+
+    item.quality = item.quality + 3 if (0...6).include?(item.sell_in)
+    item.quality = item.quality + 2 if (6...10).include?(item.sell_in)
     item.quality = item.quality + 1 if item.sell_in >= 10
-    item.quality = 0 if item.quality >= 49
   end
 
   def update_quality_brie(item)
