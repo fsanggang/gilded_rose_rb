@@ -8,9 +8,9 @@ class GildedRose
     @items.each do |item|
       case item.name
       when "Backstage passes to a TAFKAL80ETC concert"
-        Backstage.new(item).update_quality
+        Backstage.new(item).update
       when "Aged Brie"
-        Brie.new(item).update_quality
+        Brie.new(item).update
       when "Sulfuras, Hand of Ragnaros"
         return
       else
@@ -42,9 +42,16 @@ class Backstage < Item
     @item = item
   end
 
-  def update_quality
-    item.sell_in = item.sell_in - 1
+  def update
+    update_sell_in
+    update_quality
+  end
 
+  def update_sell_in
+    item.sell_in = item.sell_in - 1
+  end
+
+  def update_quality
     return item.quality = 0 if item.quality >= 49
 
     item.quality = item.quality + 3 if (0...6).include?(item.sell_in)
@@ -62,9 +69,16 @@ class Brie < Item
     @item = item
   end
 
-  def update_quality
-    item.sell_in = item.sell_in - 1
+  def update
+    update_sell_in
+    update_quality
+  end
 
+  def update_sell_in
+    item.sell_in = item.sell_in - 1
+  end
+
+  def update_quality
     item.quality = item.quality + 1 if item.sell_in <= 0 unless item.quality >= 50
     item.quality = item.quality + 1 unless item.quality >= 50
   end
