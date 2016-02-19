@@ -44,10 +44,6 @@ class Handler
     @item = item
   end
 
-end
-
-class Backstage < Handler
-
   def update
     update_sell_in
     update_quality
@@ -56,6 +52,13 @@ class Backstage < Handler
   def update_sell_in
     item.sell_in = item.sell_in - 1
   end
+
+  def update_quality
+  end
+
+end
+
+class Backstage < Handler
 
   def update_quality
     return item.quality = 0 if item.quality >= 49
@@ -68,15 +71,6 @@ class Backstage < Handler
 end
 
 class Brie < Handler
-
-  def update
-    update_sell_in
-    update_quality
-  end
-
-  def update_sell_in
-    item.sell_in = item.sell_in - 1
-  end
 
   def update_quality
     item.quality = item.quality + 1 if item.sell_in <= 0 unless item.quality >= 50
