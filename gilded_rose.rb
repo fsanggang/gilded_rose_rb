@@ -34,13 +34,17 @@ class Item
   end
 end
 
-class Backstage
+class Handler
 
   attr_accessor :item
 
   def initialize(item)
     @item = item
   end
+
+end
+
+class Backstage < Handler
 
   def update
     update_sell_in
@@ -61,13 +65,7 @@ class Backstage
 
 end
 
-class Brie
-
-  attr_accessor :item
-
-  def initialize(item)
-    @item = item
-  end
+class Brie < Handler
 
   def update
     update_sell_in
@@ -85,5 +83,5 @@ class Brie
 
 end
 
-class Sulfuras
+class Sulfuras < Handler
 end
