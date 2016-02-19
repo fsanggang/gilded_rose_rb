@@ -5,18 +5,7 @@ class GildedRose
   end
 
   def update_quality
-    @items.each do |item|
-      case item.name
-      when "Backstage passes to a TAFKAL80ETC concert"
-        Backstage.new(item).update
-      when "Aged Brie"
-        Brie.new(item).update
-      when "Sulfuras, Hand of Ragnaros"
-        return
-      else
-        puts "WAT"
-      end
-    end
+    @items.each { |item| Handler.update(item) }
   end
 end
 
@@ -37,6 +26,19 @@ end
 class Handler
 
   attr_accessor :item
+
+  def self.update(item)
+    case item.name
+    when "Backstage passes to a TAFKAL80ETC concert"
+      Backstage.new(item).update
+    when "Aged Brie"
+      Brie.new(item).update
+    when "Sulfuras, Hand of Ragnaros"
+      return
+    else
+      puts "WAT"
+    end
+  end
 
   def initialize(item)
     @item = item
