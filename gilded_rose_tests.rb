@@ -1,5 +1,6 @@
 require File.join(File.dirname(__FILE__), "gilded_rose")
 require "minitest/autorun"
+require "minitest/pride"
 
 class GildedRoseTest < Minitest::Test
 
