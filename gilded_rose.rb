@@ -84,3 +84,6 @@ class Brie
   end
 
 end
+
+class Sulfuras
+end
