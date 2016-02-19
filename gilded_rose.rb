@@ -34,7 +34,7 @@ class Item
   end
 end
 
-class Backstage < Item
+class Backstage
 
   attr_accessor :item
 
@@ -61,7 +61,7 @@ class Backstage < Item
 
 end
 
-class Brie < Item
+class Brie
 
   attr_accessor :item
 
