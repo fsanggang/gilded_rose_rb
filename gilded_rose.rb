@@ -63,8 +63,8 @@ class Backstage < Handler
   def update_quality
     return item.quality = 0 if item.quality >= 49
 
-    item.quality = item.quality + 3 if (0...6).include?(item.sell_in)
-    item.quality = item.quality + 2 if (6...10).include?(item.sell_in)
+    item.quality = item.quality + 3 if (0...6).cover?(item.sell_in)
+    item.quality = item.quality + 2 if (6...10).cover?(item.sell_in)
     item.quality = item.quality + 1 if item.sell_in >= 10
   end
 
